@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="main/main.css" rel="stylesheet">
+    <link href="imgs/favicon-32x32.png" type="image/x-icon" rel="icon">
+    <link href="input.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5a2d8f25c5.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <title>Dictionary Web App</title>
+</head>
+<body class="text-dark font-serif px-6">
+    <!-- Main div -->
+<div class="wrapper mx-auto md:w-4/6 container lg:w-3/6 xlg: w-3/5">
+  <div class="dm-bg"></div>
+  <div class="mt-10 flex flex-col gap-10">
+     <div class="flex justify-between container mx-auto items-center">
+        <img src="imgs/logo.svg" class="w-8 z-10 xlg:w-10" alt="">
+        <div class="flex gap-2 relative">
+              <div data-changer class="flex gap-2 border-r border-solid cursor-pointer border-#F9F9F9 pr-4">
+                <h3 class="font-bold text-2xl xlg:text-3xl">Serif</h3>
+                <img class="font-img xlg:w-5" src="imgs/icon-arrow-down.svg" alt="arrow-down">
+            </div>
+            <!-- Absolute -->
+            <div data-list class="rounded-xl absolute p-4 px-7 z-10 top-10 shadow-xl font-list space-y-4">
+              <h3 class="font-sans font-btn text-lg xlg:text-xl">Serif</h3>
+              <h3 class="font-serif font-btn text-lg xlg:text-xl">Sans Serif</h3>
+              <h3 class="font-mono font-btn text-lg xlg:text-xl">Mono</h3>
+            </div>
+          
+
+          <!-- Darkmode buttons -->
+            <div class="cursor-pointer switch-con flex justify-between w-16 items-center">
+              <div class="switch rounded-full" data-switch>
+                <!-- Ball Switch -->
+                <div class="ball"></div>
+              </div>
+
+              <!-- Darkmode logo-->
+                <i class="fa-solid fa-moon" data-mLogo></i>
+                <i class="fa-solid fa-sun" data-sLogo></i>
+            </div>
+          </div>
+        </div>
+     </div>
+
+     <!-- Input Field -->
+     <div class="container relative w-full mx-auto flex items-center mt-10">
+      <input type="text" value="hello" class="block h-12 w-full rounded-xl p-4 text-xl xsm:text-2xl xsm:h-16 xsm:px-6" placeholder="Search" data-input>
+      <img src="imgs/icon-search.svg" class="absolute search-logo w-7 right-0 mr-3 cursor-pointer" alt="search icon" data-search>
+     </div>
+
+      <!-- Loader -->
+      <div class="load-wrapper flex justify-center items-center">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message">
+        <div class="error">404</div>
+        <br/><br/>
+        <span class="info">Word not found</span>
+      </div>
+      
+
+ 
+     <!-- Results -->
+     <div class="mt-10 hidden" data-card>
+
+      <!-- Title part -->
+       <section class="flex justify-between">
+        <div> 
+          <h3 data-title class="text-5xl xlg:text-7xl"></h3>
+          <span data-phonetics class="color-violet mt-4 text-2xl xlg:text-4xl"></span>
+        </div>
+        <img data-play class="w-14 cursor-pointer active:scale-110 xlg:w-20" src="imgs/icon-play.svg">
+       </section>
+
+       <!-- Meanings -->
+       <section data-nounSection class="my-8">
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="text-2xl font-bold italic xlg:text-3xl">noun</h4>
+          <div class="noun-line bg-dark self-center w-full"></div>
+        </div>
+
+        <h4 class="text-xl mt-5 text-#222 meaning-title">Meaning</h4>
+        <ul class="list-container" data-meanList>
+        </ul>
+       </section>
+
+        <!-- Synonyms noun-->
+        <section class="sy-con">
+          <div class="noun-line w-full mt-10 bg-dark self-center"></div>
+          <div class="synonyms-con mt-4">
+              <span class="text-xl mt- text-#222 meaning-title">Synonyms: </span>
+              <span data-nsy class="sy-result"></span>
+          </div>
+         </section>
+       
+
+       <!-- Verb -->
+       <section data-verbSection class="mt-10"> 
+        <div class="flex items-center justify-between gap-4">
+          <h4 class="text-2xl font-bold italic">verb</h4>
+          <div class="w-full noun-line bg-dark self-center"></div>
+        </div>
+
+        <h4 class="text-xl mt-5 text-#222 meaning-title">Meaning</h4>
+        <ul class="list-container" data-verbList>
+        </ul>
+       </section>
+
+       <!-- Synonyms Verb-->
+       <section class="sy-con">
+        <div class="noun-line w-full mt-10 bg-dark self-center"></div>
+        <div class="synonyms-con mt-4">
+            <span class="text-xl mt- text-#222 meaning-title">Synonyms: </span>
+            <span class="sy-result" data-vsy></span>
+        </div>
+       </section>
+
+       <!-- Adjective Section -->
+
+       <section data-adjSection class="mt-10">
+        <div class="flex items-center gap-2 justify-between">
+          <h4 class="text-2xl font-bold italic">adjective</h4>
+          <div class="noun-line w-full bg-dark self-center"></div>
+        </div>
+
+        <h4 class="text-xl mt-5 text-#222 meaning-title">Meaning</h4>
+        <ul class="list-container" data-adjList>
+        </ul>
+       </section>
+
+       <!-- Synonyms Adejective-->
+       <section class="sy-con">
+        <div class="noun-line w-full mt-10 bg-dark self-center"></div>
+        <div class="synonyms-con mt-4">
+            <span class="text-xl mt- text-#222 meaning-title">Synonyms: </span>
+            <span data-asy class="sy-result"></span>
+        </div>
+       </section>
+
+       <!-- Source Section -->
+       <section class="mb-10">
+        <div class="noun-line mt-10 w-full bg-dark self-center"></div>
+        <h4 class="text-lg mt-4 text-#222 meaning-title">Source</h4>
+
+        <div class="flex gap-4 items-center">
+          <a data-source></a>
+          <a data-source target="_blank"><img src="imgs/icon-new-window.svg" alt="new window logo"></a>
+        </div>
+       </section>
+     </div>
+  </div>
+</div>
+</body>
+</html>
