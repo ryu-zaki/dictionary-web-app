@@ -39,11 +39,12 @@ window.addEventListener('load', () => {
     const loader = document.querySelector('.load-wrapper'); 
     /* Visibility of results */
     const wholeResult = document.querySelector('[data-card]');
-    
+    const introMess = document.querySelector('.intro-mess');
 
     searchBtn.addEventListener('click', () => {
       wholeResult.classList.remove('active')
       loader.classList.add('active');
+      introMess.classList.add('hidden-mess');
 
         /* Validation Container */
         const errMess = document.querySelector('.error-message');
@@ -96,6 +97,9 @@ window.addEventListener('load', () => {
 
             /* Audio */
             const playBtn = document.querySelector('[data-play]');
+            const noAudioSrc = document.querySelector('.no-audio-mess');
+            const audioOK = document.querySelector('[data-audio-btn]');
+
             function myFunction() {
               let audio = "";
               for (let i = 0; i < result[0].phonetics.length; i++) {
@@ -107,11 +111,15 @@ window.addEventListener('load', () => {
               
               if (audio != "") {
                 audio.play();
-              }   
+              }  else {
+                noAudioSrc.classList.add('active')
+              }
+
+              audioOK.addEventListener('click', () => {
+                noAudioSrc.classList.remove('active')
+              })
               
             }
-
-            /* console.log(word.includes(/\w/)) */
         
             playBtn.onclick = () => {
               myFunction();
@@ -218,18 +226,24 @@ window.addEventListener('load', () => {
 
 
             });
-            
-            if (!result[0].phonetics.length == 0) {
-              for (let i = 0; i < result[0].phonetics.length; i++) {
-                console.log(result[0].phonetics[i])
-                 if (result[0].phonetics[i].audio
-                     ) {
-                  phonetics.innerHTML = result[0].phonetics[i].text;
-                 }    
+            const arrPhone = [];
+            const altPhone = [];
+            for (let i = 0; i < result[0].phonetics.length; i++) {
+              if (result[0].phonetics[i].text && result[0].phonetics[i].audio) {
+               arrPhone.push(result[0].phonetics[i].text)
+              } else if (result[0].phonetics[i].text) {
+                altPhone.push(result[0].phonetics[i].text)
               }
-            } else  {
+            }
+
+            if (arrPhone.length > 0) {
+              phonetics.innerHTML = arrPhone[0];
+            } else if (altPhone.length > 0) {
+              phonetics.innerHTML = altPhone[0];
+            } else {
               phonetics.innerHTML = "";
             }
+            
             
             
 
