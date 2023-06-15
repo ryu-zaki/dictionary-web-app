@@ -179,13 +179,25 @@ input:focus {
     transition: background 3s;
 }
 
-.list-container > li {
+.list-container > li,
+.features-list > li {
     font-size: 1.1em;
     color: var(--black);
     line-height: 1.6;
 }
 
-.list-container > li::before {
+.features-list > li {
+  font-size: 1em;
+}
+
+@media (min-width: 1100px) {
+  .features-list > li {
+    font-size: 1.1em;
+  }
+}
+
+.list-container > li::before,
+.features-list > li::before {
     content: "\2022";
     color: var(--violet);
     font-weight: bold;
@@ -202,6 +214,10 @@ input:focus {
 
 [data-card] > * {
     opacity: 0;
+}
+
+[data-card].active {
+  position: static;
 }
 
 [data-card].active > * {
@@ -510,4 +526,52 @@ input:focus {
   43% {opacity: 1; transform: scaleX(10) rotate(60deg);}
 }
 
-/* PLay loading */
+/* No audio message */
+
+.no-audio-mess.active {
+  display: flex;
+}
+
+.no-audio-mess {
+  display: none;
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 999;
+}
+
+
+.no-audio-mess .card {
+  background-color: var(--light);
+  animation: pop-up .6s forwards;
+}
+
+@keyframes pop-up {
+  from {
+    transform: translateY(-10em);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.no-audio-mess .card button {
+  color: #fff;
+  background-color: var(--violet);
+}
+
+/* Introduction */
+.intro-mess p {
+  margin-bottom: 2em;
+}
+
+.intro-mess .feature-title {
+  color: var(--violet);
+}
+
+.intro-mess.hidden-mess {
+  display: none;
+}
