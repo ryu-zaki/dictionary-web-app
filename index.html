@@ -13,7 +13,7 @@
 </head>
 <body class="text-dark font-serif px-6">
     <!-- Main div -->
-<div class="wrapper mx-auto md:w-4/6 container lg:w-3/6">
+<div class="wrapper h-fit mx-auto md:w-4/6 container lg:w-3/6">
   <div class="dm-bg"></div>
   <div class="mt-10 flex flex-col gap-10">
      <div class="flex justify-between container mx-auto items-center">
@@ -52,6 +52,25 @@
       <img src="imgs/icon-search.svg" class="absolute search-logo w-7 right-0 mr-3 cursor-pointer" alt="search icon" data-search>
      </div>
 
+     <!-- Introduction message -->
+     <div class="intro-mess flex gap-5 flex-col mx-auto container mt-16">
+      <h3 class="text-xl text-center font-bold sm:text-2xl xsm:text-3xl xlg:text-4xl xlg:mb-6">Welcome to our dictionary web application!</h3>
+      <p class="leading-7 mb-20 text-sm text-center sm:text-lg xlg:text-xl xlg:leading-9">Our platform is designed to enhance your vocabulary and unravel the depths of language. With an extensive collection of definitions, you'll discover the true power of words and expand your linguistic prowess.</p>
+
+      <h3 class="text-lg feature-title xlg:text-xl">Features of our application:</h3>
+      <ul class="features-list flex flex-col gap-4">
+        <li>Definitions and Meanings</li>
+        <li>Pronunciation Guide</li>
+        <li>Dark theme</li>
+        <li>Mobile-Friendly Interface</li>
+        <li>User-Friendly Interface</li>
+        <li>Font changer</li>
+      </ul>
+
+      <p class="text-sm leading-7 sm:text-lg">Start exploring now and let our dictionary web application be your trusted guide on your linguistic journey.</p>
+      <p class="text-sm sm:text-lg" style="color: var(--darkGray);">Developed by Jhonwell Española.</p>
+     </div>
+
       <!-- Loader -->
       <div class="load-wrapper flex justify-center items-center">
         <div class="lds-roller">
@@ -72,11 +91,19 @@
         <br/><br/>
         <span class="info">Word not found</span>
       </div>
+
+      <!-- No Audio Source Message -->
+      <div class="no-audio-mess flex justify-center items-start">
+        <div class="rounded-xl card px-20 space-y-8 py-10 mt-16">
+          <h2 class="text-xl">Audio not Available</h2>
+          <button data-audio-btn class="mx-auto block text-lg py-1 px-7">Ok</button>
+        </div>
+      </div>
       
 
  
      <!-- Results -->
-     <div class="mt-10 hidden" data-card>
+     <div class="mt-10 absolute" data-card>
 
       <!-- Title part -->
        <section class="flex justify-between">
