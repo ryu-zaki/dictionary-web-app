@@ -94,7 +94,7 @@ body .dm-bg::before {
 
 body .dm-bg.active::before {
     transform: scale(24);
-    transition: all 3.5s;
+    transition: all 3s;
 } 
 
 body .dm-bg.active ~ div ~ div > input {
